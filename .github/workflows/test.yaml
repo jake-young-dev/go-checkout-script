@@ -19,6 +19,10 @@ jobs:
         shell: bash
         run: ls -l
 
+      - name: check for build file
+        shell: bash
+        run: test -f ./builds/linux-amd64-build
+
       - name: check for files
         shell: bash
-        run: ls /builds
+        run: ls ./builds
