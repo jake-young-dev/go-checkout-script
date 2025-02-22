@@ -30,20 +30,19 @@ func main() {
 	defer cancel()
 
 	var opts *git.CloneOptions
-	if _, ok := os.LookupEnv("GH_REPO_LINK"); ok {
-		repo := os.Getenv("GH_REPO_LINK")
-		fmt.Printf("pulling repo from input: %s\n", repo)
+	repoInput := os.Getenv("GH_REPO_LINK")
+	if repoInput != "" {
+		fmt.Printf("pulling repo from input: %s\n", repoInput)
 		opts = &git.CloneOptions{
-			URL: repo,
+			URL: repoInput,
 		}
 	} else {
-		repo := os.Getenv("GH_DEFAULT_REPO")
-		fmt.Printf("pulling current code repo: %s\n", repo)
 		opts = &git.CloneOptions{
-			URL: repo,
+			URL: os.Getenv("GH_DEFAULT_REPO"),
 		}
 	}
 	fmt.Println("cloning")
+
 	_, err = git.PlainCloneContext(ctx, workingdir, false, opts)
 	if err != nil {
 		panic(err)
