@@ -15,10 +15,6 @@ jobs:
         shell: bash
         run: ls 
 
-      - name: check for files
-        shell: bash
-        run: ls builds/
-
       - name: test pull
         uses: jake-young-dev/go-checkout-script@master
         with:
@@ -27,3 +23,7 @@ jobs:
       - name: check for files
         shell: bash
         run: ls -la
+      
+      - name: check for files
+        shell: bash
+        run: ls builds/
