@@ -16,6 +16,7 @@ runs:
       shell: bash
       env:
         GH_REPO_LINK: ${{ inputs.repo }} 
+        GH_REPO_ACCESS_TOKEN: ${{ inputs.token }}
         GH_DEFAULT_REPO: ${{ github.event.repository.url }}
         GH_WORKSPACE: ${{ github.workspace }}
 
