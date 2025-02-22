@@ -37,6 +37,7 @@ func main() {
 			URL: repoInput,
 		}
 	} else {
+		fmt.Println("pulling current repo")
 		opts = &git.CloneOptions{
 			URL: os.Getenv("GH_DEFAULT_REPO"),
 		}

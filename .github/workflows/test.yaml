@@ -2,7 +2,7 @@ name: "tests"
 run-name: "tests"
 on:
   push:
-    branches: master
+    branches: fix/pipeline
     paths: 
       - main.go
       - action.yaml
@@ -15,6 +15,10 @@ jobs:
       - name: clone repo
         uses: jake-young-dev/go-checkout-script@master
 
-      - name: check for build files
+      - name: check for files
         shell: bash
-        run: test -f /builds/linux-amd64-build
+        run: ls -l
+
+      - name: check for files
+        shell: bash
+        run: ls /builds
