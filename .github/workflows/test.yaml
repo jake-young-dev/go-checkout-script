@@ -6,6 +6,7 @@ on:
     paths: 
       - main.go
       - action.yaml
+      - builds/*
 
 jobs:
   test:
@@ -18,7 +19,7 @@ jobs:
       - name: test pull
         uses: jake-young-dev/go-checkout-script@master
         with:
-          repo: https://github.com/jake-young-dev/go-install-script@v0.2.2
+          repo: https://github.com/jake-young-dev/go-install-script
 
       - name: check for files
         shell: bash
