@@ -12,7 +12,7 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       - name: test pull
-        uses: jake-young-dev/go-checkout-script
+        uses: jake-young-dev/go-checkout-script@master
         with:
           repo: https://github.com/jake-young-dev/go-install-script@v0.2.2
 
