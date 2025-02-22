@@ -2,7 +2,7 @@ name: "tests"
 run-name: "tests"
 on:
   push:
-    branches: fix/pipeline
+    branches: master
     paths: 
       - main.go
       - action.yaml
@@ -13,7 +13,7 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       - name: clone repository code
-        uses: jake-young-dev/go-checkout-script@fix/pipeline
+        uses: jake-young-dev/go-checkout-script@master
 
       - name: check for build file
         shell: bash
