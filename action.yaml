@@ -8,7 +8,7 @@ runs:
   using: composite
   steps:
     - name: "run linux binary"
-      if: runner.os == "linux"
+      if: runner.os == 'linux'
       run: ${{ github.action_path }}/builds/linux-amd64-build
       shell: bash
       env:
@@ -17,7 +17,7 @@ runs:
         GH_WORKSPACE: ${{ github.workspace }}
 
     - name: "run windows binary"
-      if: ${{ runner.os == "windows" }}
+      if: runner.os == 'windows'
       run: ${{ github.action_path }}/builds/windows-amd64-build
       shell: bash
       env:
