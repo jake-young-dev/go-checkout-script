@@ -1,0 +1,21 @@
+name: "tests"
+run-name: "tests"
+on:
+  push:
+    branches: master
+    paths: 
+      - main.go
+      - action.yaml
+
+jobs:
+  test:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: test pull
+        uses: jake-young-dev/go-checkout-script
+        with:
+          repo: https://github.com/jake-young-dev/go-install-script@v0.2.2
+
+      - name: check for files
+        shell: bash
+        run: ls -la

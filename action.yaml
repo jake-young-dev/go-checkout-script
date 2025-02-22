@@ -1,0 +1,16 @@
+name: "go-checkout-script"
+description: "quick and dirty git checkout on linux workflows written in go"
+inputs:
+  repo:
+    description: "repository to clone"
+    required: false
+runs:
+  using: composite
+  steps:
+    - name: "run go binary"
+      run: ./builds/linux-amd64-build
+      shell: bash
+      env:
+        GH_REPO_LINK: ${{ inputs.repo }} 
+        GH_DEFAULT_REPO: ${{ github.event.repository.url }}
+        GH_WORKSPACE: ${{ github.workspace }}
