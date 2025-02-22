@@ -19,7 +19,7 @@ func main() {
 	fmt.Printf("using workspace %s\n", workingdir)
 
 	fs := afero.NewOsFs()
-	fmt.Println("clearing files from workspace")
+	fmt.Println("clearing existing files from workspace")
 	err := deleteEverything(fs, workingdir)
 	if err != nil {
 		panic(err)
