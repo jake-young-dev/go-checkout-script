@@ -47,6 +47,7 @@ func main() {
 
 	token := os.Getenv("GH_REPO_ACCESS_TOKEN")
 	if token != "" {
+		fmt.Println("setting authentication token")
 		opts.Auth = &http.TokenAuth{
 			Token: token,
 		}
