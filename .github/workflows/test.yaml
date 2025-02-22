@@ -12,19 +12,9 @@ jobs:
   test:
     runs-on: [ubuntu-latest]
     steps:
-      - name: check for files
-        shell: bash
-        run: ls 
-
-      - name: test pull
+      - name: clone repo
         uses: jake-young-dev/go-checkout-script@master
-        with:
-          repo: https://github.com/jake-young-dev/go-install-script
 
-      - name: check for files
+      - name: check for build files
         shell: bash
-        run: ls -la
-      
-      - name: check for files
-        shell: bash
-        run: ls builds/
+        run: test -f /builds/linux-amd64-build
