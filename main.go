@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/go-git/go-git/v5"
+	"github.com/go-git/go-git/v5/plumbing/transport/http"
 	"github.com/spf13/afero"
 )
 
@@ -41,6 +42,13 @@ func main() {
 		fmt.Println("pulling current repo")
 		opts = &git.CloneOptions{
 			URL: os.Getenv("GH_DEFAULT_REPO"),
+		}
+	}
+
+	token := os.Getenv("GH_REPO_ACCESS_TOKEN")
+	if token != "" {
+		opts.Auth = &http.TokenAuth{
+			Token: token,
 		}
 	}
 
