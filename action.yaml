@@ -8,7 +8,7 @@ runs:
   using: composite
   steps:
     - name: "run go binary"
-      run: ./builds/linux-amd64-build
+      run: ./builds/linux-amd64-build #running off build
       shell: bash
       env:
         GH_REPO_LINK: ${{ inputs.repo }} 
