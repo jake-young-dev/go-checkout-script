@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	CLONE_TIMEOUT = time.Second * 10
+	CLONE_TIMEOUT = time.Second * 10 //timeout for git clone
 )
 
 func main() {
