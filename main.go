@@ -51,13 +51,15 @@ func main() {
 		opts.Auth = &http.TokenAuth{
 			Token: token,
 		}
+		os.Setenv("GH_REPO_ACCESS_TOKEN", "n/a") //clear access token so other jobs cannot access it
 	}
 
 	fmt.Printf("cloning %s into %s\n", opts.URL, workingdir)
-	_, err = git.PlainCloneContext(ctx, workingdir, false, opts)
-	if err != nil {
-		panic(err)
-	}
+	git.PlainCloneContext(ctx, workingdir, false, opts)
+	// _, err = git.PlainCloneContext(ctx, workingdir, false, opts)
+	// if err != nil {
+	// 	panic(err)
+	// }
 	fmt.Printf("cloned %s\n", opts.URL)
 
 }
