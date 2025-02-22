@@ -1,5 +1,5 @@
 name: "go-checkout-script"
-description: "quick and dirty git checkout on linux workflows written in go"
+description: "quick and dirty git checkout for public repos that run on linux workflows"
 inputs:
   repo:
     description: "repository to clone"
@@ -7,10 +7,22 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: "run go binary"
-      run: ${{ github.action_path }}/builds/linux-amd64-build #running off build, move this to detect env possibly
-      shell: bash
-      env:
-        GH_REPO_LINK: ${{ inputs.repo }} 
-        GH_DEFAULT_REPO: ${{ github.event.repository.url }}
-        GH_WORKSPACE: ${{ github.workspace }}
+    - name: "run linux binary"
+      run:
+        if: runner.os == "linux"
+        run: ${{ github.action_path }}/builds/linux-amd64-build
+        shell: bash
+        env:
+          GH_REPO_LINK: ${{ inputs.repo }} 
+          GH_DEFAULT_REPO: ${{ github.event.repository.url }}
+          GH_WORKSPACE: ${{ github.workspace }}
+
+    - name: "run windows binary"
+      run:
+        if: ${{ runner.os == "windows" }}
+        run: ${{ github.action_path }}/builds/windows-amd64-build
+        shell: bash
+        env:
+          GH_REPO_LINK: ${{ inputs.repo }} 
+          GH_DEFAULT_REPO: ${{ github.event.repository.url }}
+          GH_WORKSPACE: ${{ github.workspace }}

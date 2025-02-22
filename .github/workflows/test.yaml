@@ -12,17 +12,9 @@ jobs:
   test:
     runs-on: [ubuntu-latest]
     steps:
-      - name: clone repo
-        uses: jake-young-dev/go-checkout-script@master
-
-      - name: check for files
-        shell: bash
-        run: ls -l
+      - name: clone repository code
+        uses: jake-young-dev/go-checkout-script@fix/pipeline
 
       - name: check for build file
         shell: bash
         run: test -f ./builds/linux-amd64-build
-
-      - name: check for files
-        shell: bash
-        run: ls ./builds

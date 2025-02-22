@@ -1,2 +1,2 @@
 # go-checkout-script
-github action to clone a repository written in go
+A github action to clone a repository without using node/typescript as required in [actions/checkout](https://github.com/actions/checkout) 
